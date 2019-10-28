@@ -99,7 +99,7 @@ console.log("---------------------------- null 和 undefined -------------------
 
 // null 和 undefined  其他（never类型）数据类型的子类型
 var num2: number;
-console.log(num2);  //输出：undefined   编译语法报错，但js可以运行
+// console.log(num2);  //输出：undefined   编译语法报错，但js可以运行
 
 var num3: undefined;
 console.log(num3);  //输出：undefined
@@ -112,7 +112,7 @@ console.log(num4);  //输出：123
 var num5: null;
 num5 = null;
 console.log(num5);
-num5 = "11" //编译语法报错，但js可以运行
+// num5 = "11" //编译语法报错，但js可以运行
 console.log(num5);
 
 //一个元素可能是 number类型 可能是null 可能是undefined
@@ -142,10 +142,10 @@ function run3(): number {
 console.log(run3());
 
 //错误写法
-function run(): undefined {
-    console.log('error-run()')
-}
-run();
+// function run(): undefined {
+//     console.log('error-run()')
+// }
+// run();
 
 console.log("---------------------------------- never类型 ----------------------------------");
 

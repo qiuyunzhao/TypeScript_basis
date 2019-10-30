@@ -68,7 +68,7 @@ class Student extends Person {
 
     //与父类同名方法会覆盖父类方法
     public toString() {
-        console.log(this.name + "**" + this.sex + "**" + this.age); //私有属性子类不能访问到，编译为js可运行
+        // console.log(this.name + "**" + this.sex + "**" + this.age); //私有属性子类不能访问到，编译为js可运行
     }
 }
 

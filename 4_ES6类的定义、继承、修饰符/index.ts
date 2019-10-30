@@ -1,10 +1,9 @@
 /*4、typeScript中的类
-    4.1 类的定义
-    4.2 继承
-    4.3 类里面的修饰符
-    4.4 静态属性 静态方法
-    4.5 抽象类 继承 多态
+    4.1 类的定义、继承、修饰符
+    4.2 静态属性 静态方法
+    4.3 抽象类 继承 多态
 */
+
 
 /* typescript里面定义属性的时候给我们提供了 三种修饰符
 
@@ -69,6 +68,7 @@ class Student extends Person {
     //与父类同名方法会覆盖父类方法
     public toString() {
         // console.log(this.name + "**" + this.sex + "**" + this.age); //私有属性子类不能访问到，编译为js可运行
+        console.log(this.name + "**" + this.sex);
     }
 }
 

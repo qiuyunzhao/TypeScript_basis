@@ -1,121 +1,22 @@
-/*
-功能：定义一个操作数据库的库  支持 Mysql Mssql  MongoDb
+import { UserClass, UserModel } from './model/user';
+import { ArticleClass, ArticleModel } from './model/article';
 
-要求1：Mysql MongoDb功能一样  都有 add  update  delete  get方法    
+//增加数据到Mysql
+var u = new UserClass();
+u.username = '张三';
+u.password = '12345655654757';
+UserModel.add(u);
 
-注意：约束统一的规范、以及代码重用
+//获取Mysql中user表数据
+var res = UserModel.get(123);
+console.log(res);
 
-解决方案：需要约束规范所以要定义接口 ，需要代码重用所以用到泛型
+//增加数据到Mongo
+var a = new ArticleClass();
+a.title = '老人与海';
+a.desc = '作者海明威';
+ArticleModel.add(a);
 
-    1、接口：在面向对象的编程中，接口是一种规范的定义，它定义了行为和动作的规范
-
-    2、泛型：通俗理解：泛型就是解决 类 接口 方法的复用性、
-*/
-
-interface DBI<T> {
-    add(info: T): boolean;
-    update(info: T, id: number): boolean;
-    delete(id: number): boolean;
-    get(id: number): any[];
-}
-
-//定义一个操作mysql数据库的类  注意：要实现泛型接口,这个类也应该是一个泛型类
-class MysqlDb<T> implements DBI<T>{
-
-    constructor() {
-        console.log('数据库Mysql建立连接');
-    }
-
-    add(info: T): boolean {
-        console.log('Mysql ---- add()');
-        console.log(info);
-        return true;
-    }
-
-    update(info: T, id: number): boolean {
-        console.log('Mysql ---- update()');
-        return true;
-    }
-
-    delete(id: number): boolean {
-        console.log('Mysql ---- delete()');
-        return true;
-    }
-
-    get(id: number): any[] {
-        console.log('Mysql ---- get()');
-        var list = [
-            {
-                title: 'xxxx',
-                desc: 'xxxxxxxxxx'
-            },
-            {
-                title: 'xxxx',
-                desc: 'xxxxxxxxxx'
-            }
-        ]
-        return list;
-    }
-
-}
-
-//定义一个操作Mongo数据库的类 
-class MongoDb<T> implements DBI<T>{
-
-    constructor() {
-        console.log('数据库Mongo建立连接');
-    }
-
-    add(info: T): boolean {
-        console.log('Mongo ---- add()');
-        console.log(info);
-        return true;
-    }
-
-    update(info: T, id: number): boolean {
-        console.log('Mongo ---- update()');
-        return true;
-    }
-
-    delete(id: number): boolean {
-        console.log('Mongo ---- delete()');
-        return true;
-    }
-
-    get(id: number): any[] {
-        console.log('Mongo ---- get()');
-        var list = [
-            {
-                title: '****',
-                desc: '********'
-            },
-            {
-                title: '****',
-                desc: '********'
-            }
-        ]
-        return list;
-    }
-
-}
-
-
-
-class User {
-    username: string | undefined;
-    password: string | undefined;
-}
-
-var u = new User();
-u.username = '张三111';
-u.password = '123456';
-
-var mysql = new MysqlDb<User>(); //类作为参数来约束数据传入的类型 
-mysql.add(u);
-
-var mongo = new MongoDb<User>();
-mongo.add(u);
-
-//获取User表 ID=4的数据
-console.log(mysql.get(1));
-console.log(mongo.get(1));
+//获取Mongo中文章表的数据
+var aRes = ArticleModel.get(1);
+console.log(aRes);
